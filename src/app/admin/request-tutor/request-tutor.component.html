@@ -1,0 +1,71 @@
+<div class="row">
+  <div class="col-md-12">
+      <div class="card">
+          <div class="card-body">
+              <div class="places-buttons">
+                  <div class="row">
+                      <div class="col-md-6 ml-auto mr-auto text-center">
+                          <h4 class="card-title">
+                              Solicitud de tutorías
+                              <p class="category">Selección según el criterio del administrator</p>
+                          </h4>
+                      </div>
+                  </div>
+                  <div class="row">
+                  Las solicitudes de tutoría se podrán aceptar/declinar según el criterio del moderador, en dado caso que la solicitud sea aceptada, automáticamente el usuario pasará a 
+                  ser un perfil de Tutor.
+                  <div class="alert alert-danger" role="alert" style="width: 100%">
+                      <strong>Oh snap!</strong> Change a few things up and try submitting again.
+                    </div>
+                  </div>
+              
+              </div>
+          </div>
+      </div>
+
+      <div *ngFor="let user of listRequests | paginate: { itemsPerPage: 10, currentPage: p }">
+      <div class="card">
+          <div class="card-body">
+              <div class="places-buttons">
+     
+
+                  <div class="row">
+                
+                      <div class="col-md-2"> 
+                          <div class="_preimg">
+                            <div class="_fix"></div>
+                            <img  class="avatarrequest border-gray" src="https://tutorias.dmcorrales.me/api/images/{{user.documento_usuario}}.jpg">
+                          </div>
+                        </div>
+
+                        <div class="col-md-10">
+                          <h3>{{user.nombres_usuario}} {{user.apellidos_usuario}}</h3>
+                            {{user.comentario_tutoria}}
+                            <br>
+                            <b>Materias:</b> 
+                            
+                            <div *ngFor="let subjects of listSubjects">
+                            <div *ngIf="subjects.cod_usuario == user.cod_usuario"> <!-- ¿Alguna otra solución?-->
+                             {{subjects.nombre_materia}}   
+                            </div>
+                            </div>
+
+                            <br/>
+                            <b>Fecha solicitud: </b> {{user.fecha_publicacion}}
+                            <div class="bottom">
+                                <a  class="btn btn-orange btn-mi-lg" (click)="acceptRequest(user.cod_usuario)" address="true" data-aform="true">Aceptar solicitud</a>
+                                <a  class="btn btn-orange btn-mi-lg" address="true" data-aform="true">Rechazar solicitud</a>
+                            </div>						
+                          </div>
+                  
+                  </div>
+              
+              </div>
+          </div>
+      </div>
+</div>
+
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+  </div>
+</div>

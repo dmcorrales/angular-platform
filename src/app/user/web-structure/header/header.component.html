@@ -1,0 +1,58 @@
+<style>
+.view {
+    background: url("http://www.onmatu.com/img/slides/math-tutor-homepage-background.jpg")no-repeat bottom center;
+    background-size: cover;
+    height: 30vh;
+}
+
+.navbar {
+    z-index: 1;
+}
+    </style>
+
+<header class="h-30">
+        <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark indigo" [containerInside]="true">
+            <mdb-navbar-brand>
+                <a class="logo navbar-brand" href="#"><strong>TUTORIAS</strong></a>
+            </mdb-navbar-brand>
+            <links>
+    
+                <!-- Links -->
+                <ul class="navbar-nav mr-auto">
+                        <ul class="navbar-nav"  mr-auto>
+                                <div *ngFor="let categorie of listCategories">
+                                <li class="nav-item " [routerLinkActive]="['active']">
+                                    <a class="nav-link waves-light" [routerLink]="categorie.ruta_categoria" mdbWavesEffect> {{categorie.nombre_categoria}} <span class="sr-only">(current)</span></a>
+                                </li>
+                              </div>
+                            </ul>
+                </ul>
+                <!-- Links -->
+        
+                <!-- Search form -->
+                    
+                <ul class="navbar-nav"  mr-auto>
+                    <li class="nav-item ">
+                        <a class="nav-link waves-light" (click)="destroySession()" mdbWavesEffect><i class="fas fa-sign-out-alt"></i> SALIR <span class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
+                    
+            </links>
+        </mdb-navbar>
+        <!-- Main -->
+        <div class="view">
+          <div class="full-bg-img">
+              <div class="mask rgba-black-strong flex-center">
+                  <div class="container">
+                      <div class="white-text text-center wow fadeInUp">
+                          <h2>Tutorías Universidad El Bosque</h2>
+                          <h5>Encuentra de forma rápida tutores dentro de las instalaciones</h5>
+                          <br>
+                          <a href="" mdbBtn color="secundary">QUIERO SABER MAS!</a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+        <!-- /.Main -->
+    </header>

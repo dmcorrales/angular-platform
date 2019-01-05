@@ -1,0 +1,173 @@
+<div class="row">
+        <div class="col-md-3">
+            <mat-card>
+              
+                <mat-card-title></mat-card-title>
+                <mat-card-subtitle></mat-card-subtitle>
+                <mat-card-content>
+                    <img  mat-card-avatar src="http://dmcorrales.me/images/{{document}}.jpg" style="border-radius: 50% ; width: 120px; height: 120px;position: relative;
+                    top: 50%;
+                    left: 30%;
+                    margin-right: -50%;
+                    ">
+  
+                     <mat-card-subtitle><h3>{{firstName}} {{secondName}}</h3></mat-card-subtitle>
+                     <mat-divider></mat-divider>
+                     <p><b>Correo Electrónico:</b> {{emailAddress}}</p>
+                    </mat-card-content>
+                    <mat-card-footer>
+
+                        <mat-card-actions>
+
+                            <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="miHorario.open()">Ver Horario
+                              </button>
+
+                        </mat-card-actions>
+                    </mat-card-footer>
+            </mat-card>
+        </div>
+    
+
+
+        <div class="col-md-5">
+            <mat-card >
+                <form  [formGroup]="publishForm" (ngSubmit)="onSubmit()">
+                <mat-card-header>
+                  <mat-card-title><i class="far fa-newspaper"></i> Nueva publicación</mat-card-title>
+                  <mat-card-subtitle>¿Te gustaron las tutorías ofrecidas?</mat-card-subtitle>
+                </mat-card-header>
+              
+                <mat-card-content>
+             <!--Textarea with icon prefix-->
+             <div class="form-group">
+              <div class="md-form">
+                  <i class="fa fa-pencil prefix"></i>
+                  <textarea type="text" id="form8" class="md-textarea form-control" formControlName="comentario" [ngClass]="{ 'is-invalid': submitted && f.comentario.errors }" mdbInputDirective></textarea>
+                  <label for="form8"></label>
+                </div>
+
+                <div *ngIf="submitted && f.comentario.errors" class="invalid-feedback">
+                    <div *ngIf="f.comentario.errors.required">Es requerido el contenido</div>
+                </div>
+              </div>
+
+                </mat-card-content>
+                <mat-card-actions>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="onSubmit()"> <i class="fas fa-arrow-circle-right"></i> Publicar
+                      </button>
+                </mat-card-actions>
+              </form>
+              </mat-card>
+
+              <br>
+
+            <div *ngFor="let message of listPublicMessages  | paginate: { itemsPerPage: 5, currentPage: p }">
+            <mat-card class="example-card">
+                <mat-card-header>
+                  <img mat-card-avatar src="http://dmcorrales.me/images/{{message.documento_usuario}}.jpg">
+                  <mat-card-title>{{message.nombres_usuario}} {{message.apellidos_usuario}}</mat-card-title>
+                  <mat-card-subtitle>Publicado: {{message.fecha_envio}}</mat-card-subtitle>
+                </mat-card-header>
+              
+                <mat-card-content>
+                  <p>
+                  {{message.texto_mensaje}}
+                  </p>
+                </mat-card-content>
+                <mat-card-actions>
+                 
+                </mat-card-actions>
+
+                
+              </mat-card>
+              <br>
+            </div>
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </div>
+
+
+        
+        <div class="col-md-4">
+            <mat-card>
+                <mat-card-header>
+                  
+                    <mat-card-title><i class="fas fa-star"></i> Puntuación</mat-card-title>
+                    <mat-card-subtitle>Es muy importante que evalúes clas clases dadas por tu tutor para sí tener un listado de recomendaciones.</mat-card-subtitle>
+                </mat-card-header>
+
+                <mat-card-content>
+                   <p> Un total de {{totalRating}} puntos sobre {{totalPoints}} votos</p>
+                    <fieldset class="rating">
+                        <input type="radio" [name]="inputName" value="5" [checked]="rating===5" />
+                        <label title="Rocks!" (click)='onClick(5)'>5 stars</label>
+                      
+                        <input type="radio" [name]="inputName" value="4" [checked]="rating===4" />
+                        <label title="Pretty good" (click)='onClick(4)'>4 stars</label>
+                      
+                        <input type="radio" [name]="inputName" value="3" [checked]="rating===3" />
+                        <label title="Meh" (click)='onClick(3)'>3 stars</label>
+                      
+                        <input type="radio" [name]="inputName" value="2" [checked]="rating===2" />
+                        <label title="Kinda bad" (click)='onClick(2)'>2 stars</label>
+                      
+                        <input type="radio" [name]="inputName" value="1" [checked]="rating===1" />
+                        <label title="Sucks big time" (click)='onClick(1)'>1 star</label>
+                      </fieldset>
+                      <mat-card-footer>
+                     
+                          <button mat-button (click)="onSubmitStars()">CALIFICAR</button>
+                        
+                      </mat-card-footer>
+                </mat-card-content>
+
+            </mat-card>
+                  
+        </div>
+
+        </div>
+
+
+<!--
+listado de alerts
+-->
+
+<ngx-smart-modal #miHorario identifier="miHorario" [closable]="false"
+customClass=" no-padding">
+<div class="modal-header">
+<h5 class="modal-title"><i class="fas fa-plus-circle"></i> HORARIO</h5>
+<button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="miHorario.close()">
+<span aria-hidden="true">&times;</span>
+</button>
+</div>
+
+
+<div class="modal-body">
+<h6>Este es el horario que el tutor manejaa.</h6>
+</div>
+
+<table class="table table-striped table-responsive-md btn-table">
+        <thead>
+          <tr>
+            <th>Día de la semana</th>
+            <th>Hrs de la semana</th>
+          </tr>
+        </thead>
+    
+        <tbody>
+
+          <tr *ngFor="let horario of listSchedule">
+              <th scope="row"> {{horario.dia_semana}}</th>
+            <td>
+            {{horario.hrs_dia}}
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+
+
+<div class="modal-footer">
+<button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="miHorario.close()">CERRAR
+</button>
+</div>
+</ngx-smart-modal>

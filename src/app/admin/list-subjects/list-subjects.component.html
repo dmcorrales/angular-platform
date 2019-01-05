@@ -1,0 +1,94 @@
+<div class="content">
+  <div class="row">
+      <div class="col-md-12">
+          <div class="card ">
+              <div class="card-header ">
+                  Listado de Materias
+              </div>
+              <div class="card-body ">
+                  <div class="table-responsive">
+                      <table class="table">
+                          <thead class=" text-primary">
+                              
+                              <th>
+                                  Código Materia
+                              </th>
+
+                              <th>
+                                  Nombre de la materia
+                              </th>
+
+                              <th>
+                                 Operaciones
+                              </th>
+                          </thead>
+                          <tbody *ngFor="let subject of listSubjects | paginate: { itemsPerPage: 10, currentPage: p }">
+                                <tr>
+                                    <td>
+                                        {{subject.cod_info_materia}}
+                                    </td>
+
+                                    <td>
+                                        {{subject.nombre_materia}}
+                                    </td>
+
+                                    <td>
+                                    
+                                        <button type="button" (click)="eliminarMateria(subject.cod_info_materia)" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+                                    </td>
+
+                                </tr>
+                            </tbody>
+
+                      </table>
+                  </div>
+                  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+              </div>
+
+
+
+
+              <div>
+               <span class="waves-effect waves-light btn modal-trigger" (click)="myMtrlzModal.open()"> <i class="fas fa-plus"></i> AGREGAR MATERIA</span>
+            </div>
+
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+
+    
+<ngx-smart-modal #myMtrlzModal identifier="myMtrlzModal" [closable]="false" customClass="modal1 no-padding">
+    <div class="modal-content">
+      <div class="row">
+        <div class="card z-depth-0" style="margin: 0;">
+          <div class="card-image">
+            <img src="https://material-design.storage.googleapis.com/publish/material_v_4/material_ext_publish/0Bx4BSt6jniD7Y1huOXVQdlFPMmM/materialdesign_introduction.png">
+            <span class="card-title">Nueva Materia</span>
+            <a class="btn-floating halfway-fab waves-effect waves-light red" (click)="myMtrlzModal.close()">
+              <i class="material-icons">close</i>
+            </a>
+          </div>
+          <div class="card-content">
+            <p>Deberás ingresar el nombre de la materia.<br> Esta materia aparecerá en el listado a inscribir para los tutores.</p>
+
+            <label for="cod_materia">Código de la materia:</label>
+            <input type="text"  name="cod_materia" [(ngModel)]="cod_materia">
+
+            <label for="nombre_materia">Nombre de la materia:</label>
+            <input type="text"  name="nombre_materia" [(ngModel)]="nombre_materia">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">.
+            <span (click)="guardarMateria(cod_materia, nombre_materia,myMtrlzModal)" class="modal-action modal-close waves-effect waves-green btn-flat"
+            style="float: right; margin: 10px;">GUARDAR</span>
+
+      <span (click)="myMtrlzModal.close()" class="modal-action modal-close waves-effect waves-green btn-flat"
+            style="float: right; margin: 10px;">Close</span>
+    </div>
+  </ngx-smart-modal>

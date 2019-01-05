@@ -1,0 +1,70 @@
+  <div class="row">
+      <div class="col-md-8">
+          <mdb-card>
+              <mdb-card-header><i class="fab fa-wpforms"></i> Inscribirme como tutor</mdb-card-header>
+         
+              <mdb-card-body>
+                  <form [formGroup]="registroMateriasForm" (ngSubmit)="onSubmit()"  >
+                <mdb-card-title>
+                </mdb-card-title>
+                <mdb-card-text>
+
+                  <!--Textarea with icon prefix-->
+                <p><b>¿Porque desea ser tutor?</b></p>
+                <div class="form-group">
+              <div class="md-form">
+                <i class="fa fa-pencil prefix"></i>
+                <textarea type="text" id="form8" class="md-textarea form-control"  formControlName="comentario" ></textarea>
+                <label for="form8">Escribe de forma breve el porqué deseas ser tutor..</label>
+              </div>
+              </div>
+
+
+              <p><b>Listado de materias que deseas inscribir:</b></p>
+                  <!-- Default unchecked -->
+                  
+                <div *ngFor="let materia of listSubjects1">
+                    <input type="checkbox" (change)="onChange(materia.cod_info_materia, $event.target.checked)"> {{materia.nombre_materia}}<br>
+              </div>
+
+
+                </mdb-card-text>
+                <div class="form-group">
+                <button class="btn btn-success"><i class="fas fa-arrow-right"></i> ENVIAR SOLICITUD</button>
+                </div>
+              </form>
+            
+              </mdb-card-body>
+            </mdb-card>   
+          </div>
+      
+          <div class="col-md-4">
+              <mdb-card>
+                  <mdb-card-header><i class="fas fa-question-circle"></i> Información</mdb-card-header>
+                  <mdb-card-body>
+                    <mdb-card-title>
+                    </mdb-card-title>
+
+                        <div class="alert alert-info" role="alert">
+                            ¿Cómo es el proceso de inscripción?
+                          </div>
+                         <ul>
+                           <li>
+                            El formulario será recibido y validado por nosotros, luego se te informará si fué aceptada tu petición.
+                           </li>
+
+                           <li>
+                            Si eres aceptado, aparecerás automáticamente en el listado de Tutores. 
+                           </li>
+
+                           <li>
+                            Cada tutor debe manejar por obligación un horario el cual aparecerá en tú perfil, así los demás estudiantes podrán conocer más de tu disponibilidad.
+                           </li>
+
+                         </ul>
+                        
+                  </mdb-card-body>
+                </mdb-card>
+          </div>
+      
+          </div>

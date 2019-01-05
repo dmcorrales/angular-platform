@@ -1,0 +1,98 @@
+<div class="content">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="title">Editar Perfil</h5>
+                </div>
+                <div class="card-body">
+                    <form   [formGroup]="editUserForm" (ngSubmit)="onSubmit()">
+                        <div class="col-md-4 pl-1">
+                            <div class="form-group">
+                                <label>ID</label>
+                                <input type="text" class="form-control" formControlName="id_user"  [(ngModel)]="cod_usuario"  disabled="" value="{{cod_usuario}}">
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+
+                        <div class="col-md-3 px-1">
+                            <div class="form-group">
+                                <label>Nombres</label>
+                                <input type="text" class="form-control" formControlName="nombre_usuario"  [(ngModel)]="nombre_usuario" value="{{nombre_usuario}} ">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Apellidos</label>
+                            <input type="text" class="form-control" formControlName="apellido_usuario"  [(ngModel)]="apellido_usuario" value="{{apellido_usuario}} ">
+                        </div>
+                    </div>
+
+
+
+                        <div class="col-md-4 pl-1">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Email address</label>
+                                <input type="email" class="form-control"  formControlName="correo_usuario" [(ngModel)]="correo_usuario" value="{{correo_usuario}}">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Contraseña</label>
+                                    <input type="password" class="form-control"  formControlName="password_usuario" [(ngModel)]="password_usuario"  value="{{password_usuario}}">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4 pr-1">
+                                <div class="form-group">
+                                    <label>Rango</label>
+                                    <input type="number" class="form-control" formControlName="cod_rol" [(ngModel)]="cod_rol" value="{{cod_rol}}">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4 pr-1">
+                                <div class="form-group">
+                                    <label>Estado</label>
+                                    <select  formControlName="estado_usuario" [(ngModel)]="estado_usuario" value="{{estado_usuario}}"> 
+                                    <option value="A">Activo</option>
+                                    <option value="I">Inactivo</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                        <button  class="btn btn-primary">Guardar</button>
+                         </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card card-user">
+                <div class="image">
+                    <img src="https://cdn4.vectorstock.com/i/1000x1000/70/58/abstract-angular-background-vector-6257058.jpg"
+                        alt="...">
+                </div>
+                <div class="card-body">
+                    <div class="author">
+                        <a href="#">
+                            <img class="avatar border-gray" src="https://tutorias.dmcorrales.me/api/images/{{documento_usuario}}.jpg" alt="...">
+                            <h5 class="title">{{nombre_usuario}} {{apellido_usuario}}</h5>
+                        </a>
+                        <p class="description">
+                            Todavía no hay nada
+                        </p>
+                    </div>
+                </div>
+                <hr>
+            </div>
+        </div>
+    </div>

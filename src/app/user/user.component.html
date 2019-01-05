@@ -1,0 +1,15 @@
+<app-header></app-header>
+<br>
+<div class="container-fluid">
+
+<div class="row">
+
+    </div>
+
+    <div class="alert alert-danger" role="alert" *ngIf="showNotification==true && myRank == 2">
+            <strong>Importante! </strong> Parece que todavía no has inscrito tu horario, es importante que los estudiantes puedan ver tu disponibilidad. <a routerLink="/user/editProfile"><b>Ir a configurarlo -> Perfil -> Mi Horario</b></a>
+          </div>
+          <router-outlet></router-outlet>
+ 
+</div>
+<app-footer></app-footer>

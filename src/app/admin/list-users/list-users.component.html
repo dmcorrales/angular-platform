@@ -1,0 +1,72 @@
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card ">
+                <div class="card-header ">
+                    Listado de usuarios
+                </div>
+                <div class="card-body ">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class=" text-primary">
+                                
+                                <th>
+                                    Código
+                                </th>
+
+                                <th>
+                                    Nombre
+                                </th>
+
+                                <th>
+                                    Apellidos
+                                </th>
+
+                                <th>
+                                    Rango
+                                </th>
+
+                                <th class="text-right">
+                                    Correo
+                                </th>
+
+                                <th class="text-right">
+                                    Operaciones
+                                </th>
+                            </thead>
+                            <tbody *ngFor="let user of listUsers | paginate: { itemsPerPage: 10, currentPage: p }">
+                                <tr>
+                                    <td>
+                                        {{user.cod_usuario}}
+                                    </td>
+
+                                    <td>
+                                        {{user.nombres_usuario}}
+                                    </td>
+
+                                    <td>
+                                        {{user.apellidos_usuario}}
+                                    </td>
+
+                                    <td>
+                                        {{user.cod_rol}}
+                                    </td>
+
+                                    <td class="text-right">
+                                        {{user.correo_usuario}}
+                                    </td>
+
+                                    <td class="text-right">
+                                        <button type="button" class="btn btn-info" routerLink="/admin/listUsers/editUser" [queryParams]="{id: user.cod_usuario}"> <i class="fas fa-info-circle"></i> VER PERFIL</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+                    </div>
+                    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,6 @@
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+.example-stretched-tabs {
+    max-width: 800px;
+  }
+  

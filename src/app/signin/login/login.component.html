@@ -1,0 +1,56 @@
+    <div class="form-holder">
+            <div class="form-content">
+                <div class="form-items">
+                    <h3>Plataforma de tutorías para la Universidad El Bosque</h3>
+                    <p>Consigue tus tutorías de forma rápida!</p>
+                    <div class="page-links">
+                            <a  class="active">Login</a><a  [routerLink]="['/signin/registro']" >Registro</a>
+                    </div>
+                    <form  [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                        
+                    <div class="form-group">
+                    <label for="emailAddress"></label>
+                    <input class="form-control" type="text" formControlName="email" placeholder="Correo electrónico.." [ngClass]="{ 'is-invalid': submitted && f.email.errors }" >
+                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                            <div *ngIf="f.email.errors.required">El correo es requerido</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password"></label>
+                    <input class="form-control" type="password" formControlName="password" placeholder="Password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" >
+                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                            <div *ngIf="f.password.errors.required">La contraseña es requerida</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                            <button [disabled]="loading" class="btn btn-primary">Login</button>
+                            <div class="preloader-wrapper small active" *ngIf="loading">
+                                <div class="spinner-layer spinner-red-only">
+                                  <div class="circle-clipper left">
+                                    <div class="circle"></div>
+                                  </div><div class="gap-patch">
+                                    <div class="circle"></div>
+                                  </div><div class="circle-clipper right">
+                                    <div class="circle"></div>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <mat-spinner  *ngIf="loading"></mat-spinner>
+    
+                              
+
+                              
+                            <a [routerLink]="['/signin/registro']" class="btn btn-link">Regístrate</a>
+                        </div>
+ 
+                    </form>
+                    <div class="other-links">
+                        <span><i class="fab fa-github"></i> <a href="https://github.com/dmcorrales"> dmcorrales</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+ 

@@ -1,0 +1,72 @@
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card ">
+                <div class="card-header ">
+                    Listado Tutorías
+                </div>
+                <div class="card-body ">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class=" text-primary">
+                                
+                                <th>
+                                    Código del tutor
+                                </th>
+
+                                <th>
+                                    Documento del Estudiante
+                                </th>
+
+                                <th>
+                                   Código de la Materia
+                                </th>
+
+                                <th>
+                                   Tema
+                                </th>
+
+                                <th class="text-right">
+                                   Anotación
+                                </th>
+
+                                <th class="text-right">
+                                   Fecha
+                                </th>
+                            </thead>
+                            <tbody *ngFor="let report of reportList | paginate: { itemsPerPage: 10, currentPage: p }">
+                                <tr>
+                                    <td>
+                                        {{report.cod_tutor}}
+                                    </td>
+
+                                    <td>
+                                        {{report.cod_estudiante}}
+                                    </td>
+
+                                    <td>
+                                        {{report.cod_materia}}
+                                    </td>
+
+                                    <td>
+                                        {{report.tema_materia}}
+                                    </td>
+
+                                    <td class="text-right">
+                                        {{report.anotacion_informe}}
+                                    </td>
+
+                                    <td class="text-right">
+                                        {{report.fecha_informe}}
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+                    </div>
+                    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

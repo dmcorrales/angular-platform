@@ -1,0 +1,70 @@
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+              Listado de tutores
+            </div>
+            <ul class="list-group list-group-flush">
+              <div *ngFor="let tutor of listaTutores">
+              <li class="list-group-item">
+                
+                <div class="row">
+                  <div class="col-md-2">
+                    <img src="https://tutorias.dmcorrales.me/api/images/{{tutor.documento_usuario}}.jpg" style="border-radius: 50%" width="100px" height="100px">
+                  </div>
+
+                  <div class="col-md-8">
+                    <div class="row">
+                      <h3><b>{{tutor.nombres_usuario}} {{tutor.apellidos_usuario}}</b></h3>
+                    </div>
+
+                    <div class="row">
+                       
+                    </div>
+
+                    <div class="row">
+                      <b>Materias:</b>
+                      <ul>
+                        <div *ngFor="let materia of listaMaterias">
+                          <div *ngIf="materia.cod_usuario == tutor.cod_usuario">
+                            <li>
+                               {{materia.nombre_materia}}
+                             </li>
+
+                            </div>
+                         
+                        </div>
+             
+                    </ul>
+                      
+                    </div>
+                  </div>
+
+                  <div class="col-md-2">
+                      <button type="button" class="btn btn-info" routerLink="/user/viewProfile" [queryParams]="{id: tutor.cod_usuario}"> <i class="fas fa-info-circle"></i> VER PERFIL</button>
+                  </div>
+  
+                </div>
+
+              </li>
+            </div>
+            </ul>
+          </div>
+                  
+        </div>
+    
+        <div class="col-md-4">
+            <mdb-card>
+                <mdb-card-header class="primary-color white-text">
+                  <h4>INSCRÍBETE</h4>
+                </mdb-card-header>
+                <mdb-card-body>
+                  <mdb-card-title>¿Quieres participar como tutor?</mdb-card-title>
+                  <mdb-card-text> Envíanos tu formulario para participar como tutor.</mdb-card-text>
+                  <a mdbBtn color="success" class="waves-light" routerLink="/user/requestLesson" mdbWavesEffect><i class="fas fa-exclamation-circle"></i> INSCRIBIRME</a>
+                 
+                </mdb-card-body>
+              </mdb-card>
+        </div>
+    
+        </div>

@@ -1,0 +1,33 @@
+
+<div class="sidebar" data-color="orange">
+  
+  <!--
+    Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
+-->
+  <div class="logo">
+    <a href="#" class="simple-text logo-mini">
+      UEB
+    </a>
+    <a href="#" class="simple-text logo-normal">
+      ADMIN TUTORIAS
+    </a>
+  </div>
+
+  <div class="sidebar-wrapper">
+    <ul class="nav">
+      <div *ngFor="let categorias of listCategories">
+        <li [routerLink]="categorias.ruta_categoria" [routerLinkActive]="['active']"> 
+          <a [routerLink]="categorias.ruta_categoria">
+          <i class="now-ui-icons design_app"></i>
+          <p>{{categorias.nombre_categoria}}</p>
+        </a>
+      </li>
+    </div>
+    </ul>
+
+  </div>
+
+</div>
+
+
+      
